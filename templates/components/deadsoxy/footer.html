@@ -1,0 +1,96 @@
+<footer id="footer" class="footer">
+
+	<div class="container">
+		<div class="columns p2em is-mobile">
+
+
+			{{!-- logo --}}
+			<div class="column ink-logo is-2">
+				<div class="lg-contain">
+					{{!-- {{cdn 'img/logo_wht.svg'}} --}}
+					<img src="https://image.spreadshirtmedia.com/image-server/v1/mp/designs/1016489534,width=178,height=178/south-african-american-flag-south-africa-and-usa-design.png">
+				</div>
+			</div><div class="column is-1"></div>
+
+
+			{{!-- catalogue --}}
+			<div class="column catalogue">
+				<h3>{{lang 'footer.categories'}}</h3>
+				<ul>
+	                {{#each categories}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+	            </ul>
+			</div>
+
+
+
+			{{!-- brands --}}
+			{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+			<div class="column brands">
+				<h3>{{lang 'footer.brands'}}</h3>
+				<ul>
+	                {{#each shop_by_brand}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+	            </ul>
+			</div>
+			{{/and}}
+
+
+
+			{{!-- info --}}
+			<div class="column info">
+				<h3>Account</h3>
+				<ul>
+	                {{#each pages}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+					{{!-- <li><a href="javascript:void(0)">Social</a></li> --}}
+	                <li><a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a></li>
+				</ul>
+			</div>
+
+
+
+			{{!-- address --}}
+			<div class="column address">
+				<h3>info</h3>
+				{{#if settings.address}}
+		            <article class="" data-section-type="storeInfo">
+		                <address>{{nl2br settings.address}}</address><hr style="opacity: 0.15">
+		                {{#if settings.phone_number}}
+		                    <span>{{lang 'footer.call_us' phone_number=settings.phone_number}}</span>
+		                {{/if}}
+		            </article>
+	            {{/if}}
+			</div>
+
+
+
+
+
+		</div>
+
+        {{> components/deadsoxy/newsletter-footer}}
+
+		{{!-- copyright --}}
+		{{#if theme_settings.show_copyright_footer}}
+	        <div class="footer-copyright">
+	            <p class="powered-by">
+	            	<span><a href="https://www.instagram.com/Braaitime" target="_blank">#BraaiTime</a> | </span>
+	            	<span>&copy; {{moment format="YYYY"}} {{settings.store_name}} | </span>
+	            	<span>Made in South Africa &#9825 |</span>
+	            	<span> <a href="mailto:Help@Braaitime.com" target="_blank">Help@Braaitime.com</a></span>
+	            </p>
+	        </div>
+	    {{/if}}
+		<br>
+	</div>
+</footer>

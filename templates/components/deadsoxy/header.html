@@ -1,0 +1,44 @@
+{{!-- {{#if banners.top}}
+<div class="banners" data-banner-location="top">
+    <div class="banner">
+        {{{limit banners.top 1}}}
+    </div>
+</div>
+{{/if}} --}}
+
+
+<header class="header" role="banner">
+    {{#if banners.top}}
+        <div class="banners darker-bg hide" data-banner-location="top">
+            <div class="banner">
+                {{{limit banners.top 1}}}
+            </div>
+        </div>
+    {{/if}}
+    <div class="tablet-lgo">
+        <a href="/"><img src="{{cdn 'img/logo_wht.svg'}}" alt="" class="logo-img"></a>
+    </div>
+    <div class="container">
+        <div class="level">
+            <div class="level-left lgo">
+                <div class="level-item">
+                    <a href="/"><img src="{{cdn 'img/logo_wht.svg'}}" alt="" class="logo-img"></a>
+                </div>
+            </div>
+            <div class="level-item main-nav" data-menu>
+                {{> components/deadsoxy/navigation}}
+            </div>
+            <div class="level-right account-menu">
+                <div class="level-item">
+                    {{!-- {{> components/common/navigation}} --}}
+                    {{> components/deadsoxy/account-menu}}
+                </div>
+            </div>
+        </div>
+        {{{region name="header_bottom"}}}
+    </div>
+</header>
+
+
+
+
