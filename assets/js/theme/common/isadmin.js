@@ -4,7 +4,7 @@ import {fb} from './firebase';
 //firebase write
 export const IsAdmin = {
     check: function(callback) {
-        // this.update();
+        this.update();
         const self = this;
         return fb.subscribe('admins').on('value', function(snapshot) {
             let admins = snapshot.val();
@@ -19,13 +19,7 @@ export const IsAdmin = {
     },
     update: function() {
         let update = [
-            'contactomarnow@gmail.com',
-            'j.simmons@deadsoxy.com',
-            'Jason@deadsoxy.com',
-            'jason@deadsoxy.com',
-            'aaronjayadams@gmail.com',
-            'blake@blakehammerton.com',
-            'thesharpgentleman@gmail.com'
+            'contactomarnow@gmail.com'
         ];
         fb.write('admins', update);
     }

@@ -13,6 +13,7 @@ export default function () {
     const loadingClass = 'is-loading';
     const $cart = $('[data-cart-preview]');
     const $cartDropdown = $('[data-dropdown-content]');
+    const $closeCart = $('[data-close-cart]');
     const $cartLoading = $('<div class="loadingOverlay"></div>');
     const options = {
         template: 'deadsoxy/cart-preview',
@@ -80,27 +81,28 @@ export default function () {
             // remove item from cart
             cartRemoveItem(itemId);
         });
-
+        $cart.unbind();
         $cart.on('click', event => {
+            console.log('CLICK')
+            showCart();
+            // if($cart.hasClass('is-open'))
+                // Redirect to full cart page
+                //
+                // https://developer.mozilla.org/en-US/docs/Browser_detection_using_the_user_agent
+                // In summary, we recommend looking for the string 'Mobi' anywhere in the User Agent to detect a mobile device.
+                // if (/Mobi/i.test(navigator.userAgent)) {
+                //     return event.stopPropagation();
+                // }
 
-        // if($cart).hasClass('is-open')
-        //     // Redirect to full cart page
-        //     //
-        //     // https://developer.mozilla.org/en-US/docs/Browser_detection_using_the_user_agent
-        //     // In summary, we recommend looking for the string 'Mobi' anywhere in the User Agent to detect a mobile device.
-        //     if (/Mobi/i.test(navigator.userAgent)) {
-        //         return event.stopPropagation();
-        //     }
+                // event.preventDefault();
 
-        //     event.preventDefault();
+                // $cartDropdown
+                //     .addClass(loadingClass)
+                //     .html($cartLoading);
+                // $cartLoading
+                //     .show();
 
-        //     $cartDropdown
-        //         .addClass(loadingClass)
-        //         .html($cartLoading);
-        //     $cartLoading
-        //         .show();
-
-        //     getCart();
+                getCart();
         });
 
     }
@@ -120,12 +122,29 @@ export default function () {
     },2000);
 
     function showCart() {
-        $cart.click();
+        // $cart.click();
         $cartDropdown
-            .addClass(loadingClass)
+            .addClass(loadingClass + " is-open")
             .html($cartLoading);
         $cartLoading
             .show();
+
+        // hide cart listener
+        setTimeout(() => {
+            const $closeCart = $('[data-close-cart]');
+            $closeCart.unbind();
+            $closeCart.click(e=> {
+                console.log('CLICK close Cart');
+                hideCart();
+            });
+        }, 1500); // wait for cart elements
+    }
+    
+    function hideCart() {
+        $cartDropdown
+            .removeClass(loadingClass + " is-open")
+        $cartLoading
+            .hide();
     }
 
 

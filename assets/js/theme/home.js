@@ -8,7 +8,7 @@ export default class Home extends PageManager {
 	loaded(next) {
 		$('body').removeClass('inside');
 		this.getHomeData();
-		this.pressCar();
+		// this.pressCar();
 		this.admin();
 		next();
 	}
@@ -25,6 +25,7 @@ export default class Home extends PageManager {
 		// console.log(isAdmin)
 	}
 	
+
 
 
 
@@ -54,7 +55,7 @@ export default class Home extends PageManager {
 		fb.subscribe('quotes').on('value', function(snapshot) {
 			pressCar.html('');
             press_data = snapshot.val();
-            console.log(press_data);
+            // console.log(press_data);
             $.each(press_data, function(i, entry){
             	// console.log(entry);
             	let markup = `<div class="logo column is-3" data-ref="${entry.href}" data-id="${entry.id}" data-quote="${entry.quote}"> <img class="logo-img" src="${entry.img}"> </div>`;
@@ -174,8 +175,10 @@ export default class Home extends PageManager {
 
 
 	getHomeData() {
+		console.log('getHomeData');
 		fb.subscribe('home').on('value', function(snapshot) {
-            var home_data = snapshot.val();
+			var home_data = snapshot.val();
+			console.log('home_data', home_data)
             // zones
 			$('[data-zone]').each( function(i, zone){
 				let zone_id = $(zone).data('zone');
@@ -191,7 +194,7 @@ export default class Home extends PageManager {
         });
 	}
 	createDropzones() {
-		// console.log('createDropzones()')
+		console.log('createDropzones()')
 		var home = this;
 	  	var dz_configs = {
 		  	url: "/file/post",

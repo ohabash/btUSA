@@ -6,9 +6,47 @@ import 'jquery-migrate';
 import Global from './theme/global';
 
 
+ // polyfill for formData.entries
+// if (window.navigator.userAgent.indexOf("Edge") > -1) {
+    
+//     formdata.entries = function( obj ){
+//         console.info('=====polyfill for Object.entries=====')
+//         var ownProps = Object.keys( obj ),
+//             i = ownProps.length,
+//             resArray = new Array(i); // preallocate the Array
+//         while (i--)
+//           resArray[i] = [ownProps[i], obj[ownProps[i]]];
+        
+//         return resArray;
+//     };
+// }else {
+//     console.log('======no need for polyfill======');
+// }
+scrolled();
 
 
+function scrolled() {
+    $(window).scroll(function () {
+        var y_scroll_pos = window.pageYOffset;
+        var topBarHeight = $('header').height();
+        var scroll_pos_test = topBarHeight;
+        var promoHeight = '-' + $('.above-nav-info').outerHeight() + 'px';
+        // var promoHeight = "32px";
 
+        if (y_scroll_pos > scroll_pos_test) {
+            $('.above-nav-info').css('margin-top', promoHeight);
+            $("body").addClass('scrolled');
+        } else {
+            $('.above-nav-info').css('margin-top', 0 + 'px');
+            $("body").removeClass('scrolled');
+        }
+
+    });
+    // ghost
+    setTimeout(() => {
+        $('.inside-header').css('margin-top', $('header').height() + 'px');
+    }, 800);
+}
 
 
 const getAccount = () => import('./theme/account');
@@ -84,10 +122,10 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
                 
                 // Finds the appropriate class from the pageType.
                 const pageClassImporter = pageClasses[pageType];
-                console.log({
-                    'context':context,
-                    'pageType':pageType,
-                })
+                // console.log({
+                //     'context':context,
+                //     'pageType':pageType,
+                // });
                 if (typeof pageClassImporter === 'function') {
                     PageClass = (await pageClassImporter()).default;
                 }
@@ -113,3 +151,4 @@ window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null
         },
     };
 };
+

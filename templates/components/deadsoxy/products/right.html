@@ -18,7 +18,7 @@
 		{{!-- {{inject "myProductName" product.title}} --}}
 
 		<p><small>{{product.sku}}</small></p>
-		<h1>{{product.title}}</h1>
+<h1 style="margin-left: -14px !important;">{{product.title}}</h1>
 		
 		<!-- brand -->
 		<h2>
@@ -36,9 +36,9 @@
 		 {{/if}}
 
         <!-- price -->
-		<h2 class="mobile-only yellow">
-           {{> components/deadsoxy/products/price}}**
-        </h2>
+		<h3 class="mobile-only yellow">
+           {{> components/deadsoxy/products/price}}
+        </h3>
 
         <!-- tabs -->
         {{> components/deadsoxy/products/tabs}}
@@ -86,10 +86,10 @@
 		    </div>
 		</section>
 
-		<section class="product-page-progress">
+		{{!-- <section class="product-page-progress">
 			<h3>Savings Meter</h3>
 			{{> components/deadsoxy/cart-meter}}
-		</section>
+		</section> --}}
 
 		{{!-- award progress --}}
 		{{!-- <section class="product-page-progress">

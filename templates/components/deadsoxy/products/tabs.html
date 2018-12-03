@@ -9,6 +9,13 @@
 	        <span>Product Info</span>
 	      </a>
 	    </li>
+			
+			{{!-- item --}}
+	    {{!-- <li class="is-active" data-tab="bulk">
+	      <a>
+	        <span>Bulk Pricing</span>
+	      </a>
+	    </li> --}}
 	    
 	    {{!-- item --}}
 	    <li data-tab="reviews">
@@ -28,11 +35,13 @@
 	    </li>
 	    
 	    {{!-- item --}}
-	    <li data-tab="wishlist" class="is-active1">
-	      <a>
-	        <span>Wishlist</span>
-	      </a>
-	    </li>
+	    {{#if settings.show_wishlist}}
+		    <li data-tab="wishlist" class="is-active1">
+		      <a>
+		        <span>Wishlist</span>
+		      </a>
+		    </li>
+	    {{/if}}
 
 	  </ul>
 	  <div class="underline"></div>
@@ -43,6 +52,11 @@
 			{{> components/products/description}}
 		</div>
 
+		<div class="content" id="bulk">
+			{{> components/products/bulk-discount-rates}}
+		</div>
+		
+		
 		<div class="content" id="science">
 			science
 		</div>
@@ -54,12 +68,14 @@
 		<div class="content" id="share">
 			{{> components/common/share}}
 		</div>
-
-		<div class="content" id="wishlist">
-			{{#if settings.show_wishlist}}
-                {{> components/common/wishlist-dropdown}}
-            {{/if}}
-		</div>
+		
+		{{#if settings.show_wishlist}}
+			<div class="content" id="wishlist">
+				{{#if settings.show_wishlist}}
+	                {{> components/common/wishlist-dropdown}}
+	            {{/if}}
+			</div>
+		{{/if}}
 
 	</div>
 

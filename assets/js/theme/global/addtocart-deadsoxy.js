@@ -15,7 +15,6 @@ export default function addtocart_deadsoxy(quick) {
     const $button = (quick) ? $('[data-cart-item-add-quickadd]') : $('[data-cart-item-add-2]');
 
 
-
     /**
      * move button & reveal
      */
@@ -54,10 +53,8 @@ export default function addtocart_deadsoxy(quick) {
     /**
      * Grooms listener
      */
-    //  console.log('grooms listener');
     //  $('[data-grooms-add]').unbind();
     // $('[data-grooms-add]').on('click', e => {
-    //     console.log('grooms add !!!!')
     //     e.preventDefault();
     //     const $form_d = $(`[data-item-add-groomsD]`); // user selections
     //     const $form = $(`[data-item-add-grooms]`); // default
@@ -80,23 +77,12 @@ export default function addtocart_deadsoxy(quick) {
      * Add a product to cart
      */
     function addProductToCart(e, form, callback) {
-        console.log(form); 
+        // e.preventDefault();
         const formdata = new FormData(form);
-        for (var value of formdata.entries()) {
-           console.log(value); 
-        }
-
-        const url = formdata.getAll('url')[0];
-        const productId = formdata.getAll('product_id')[0];
-        const qty = formdata.getAll('qty[]')[0];
-
-        const $addToCartBtn = $(e.target);
-        // const $addToCartBtn = $('[data-cart-item-add-2]', $(e.target));
-        const originalBtnVal = $addToCartBtn.html();
-        const waitMessage = $addToCartBtn.data('wait-message');
+        // for (var value of formdata.entries()) {
+        // }
 
         // Do not do AJAX if browser doesn't support FormData
-        // return console.log(window.FormData);
         if (window.FormData === undefined) {
             form.submit();
             form.on('submit', e => {
@@ -104,6 +90,17 @@ export default function addtocart_deadsoxy(quick) {
             });
             return;
         }
+        const url = $("[name='url']",form).val();
+        const productId = $("[name='product_id']",form).val();
+        const qty = $("[name='qty[]']",form).val();
+
+        console.log({url:url, productId:productId, qty:qty});
+
+        const $addToCartBtn = $(e.target);
+        // const $addToCartBtn = $('[data-cart-item-add-2]', $(e.target));
+        const originalBtnVal = $addToCartBtn.html();
+        const waitMessage = $addToCartBtn.data('wait-message');
+
 
 
         $addToCartBtn
@@ -125,7 +122,6 @@ export default function addtocart_deadsoxy(quick) {
             // Guard statement $('[data-product-attribute]')
             if (errorMessage) {
                 console.error(errorMessage);
-                console.log('form', form);
                 // Strip the HTML from the error message
                 const tmp = document.createElement('DIV');
                 const conflicting_options = $('[data-product-attribute]');
@@ -136,8 +132,7 @@ export default function addtocart_deadsoxy(quick) {
                 // if the error is option related then launch options modal
                 if(errorMessage.includes('option')) {
                     return getOptions(productId, res => {
-                        console.log(res);
-                        conflicting_options.remove();
+                        // conflicting_options.remove();
                         setTimeout(e=>{
                             // maintain original qty
                             $('form.special').find('[name="qty[]"]').val(qty);
@@ -148,9 +143,8 @@ export default function addtocart_deadsoxy(quick) {
                             width: 340,
                             confirmButtonText: "Add to Cart"
                         }).then( (e) => {
-                            conflicting_options_parent.append(conflicting_options_clone);
+                            // conflicting_options_parent.append(conflicting_options_clone);
                             return addProductToCart(e, $(`[pop-form]`)[0], (res)=>{
-                                console.log('res', res);
                             });
                         });
                     });
@@ -165,7 +159,6 @@ export default function addtocart_deadsoxy(quick) {
             updateCartContent(response.data.cart_item.hash);
 
             if(callback) {
-                console.log('callback')
                 callback();
             }
         });
@@ -173,6 +166,7 @@ export default function addtocart_deadsoxy(quick) {
 
 
     function getOptions(productId, next) {
+        console.log('getOptions: ', productId);
         utils.api.product.getById(productId, { template: 'deadsoxy/products/options_modal' }, (err, response) => {
            next(response);
         });
@@ -194,7 +188,6 @@ export default function addtocart_deadsoxy(quick) {
             }
 
             $confirmationPop.html(response).removeClass('hide');
-            console.log('======== updateCartContent ========')
             // Update cart counter
             const $body = $('body');
             const $cartQuantity = $('[data-cart-quantity]');

@@ -40,6 +40,7 @@ export default class StencilDropdown {
         let modalOpened = false;
 
         $dropDownTrigger.on('click', event => {
+            // console.log('CLICK =>', event.target);
             const $cart = $('.is-open[data-cart-preview]');
 
             if ($cart) {

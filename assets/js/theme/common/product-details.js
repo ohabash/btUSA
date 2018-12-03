@@ -223,9 +223,9 @@ export default class ProductDetails {
     addProductToCart(event, form) {
         console.log(form); 
         const formdata = new FormData(form);
-        for (var value of formdata.entries()) {
-           console.log(value); 
-        }
+        // for (var value of formdata.entries()) {
+        //    console.log(value); 
+        // }
         // const $addToCartBtn = $('#form-action-addToCart', $(event.target));
         const $addButton = $('[data-addButton]'); // omar added new button
         const $addToCartBtn = $addButton;
@@ -516,7 +516,7 @@ export default class ProductDetails {
         const inStockIds = data.in_stock_attributes;
         const outOfStockMessage = ` (${data.out_of_stock_message})`;
 
-        // this.showProductImage(data.image);
+        this.showProductImage(data.image);
 
         if (behavior !== 'hide_option' && behavior !== 'label_option') {
             return;

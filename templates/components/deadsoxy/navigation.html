@@ -24,10 +24,32 @@
            <a class="navPages-action" href="/style">About</a>
         </li>
 
-        {{!-- search trigger --}}
+        {{!-- Search Trigger --}}
         <li class="navPages-item" data-mega-toggle="_search">
             <a href="javascript:void(0)" class="navPages-action"><i class="fas fa-search"></i></a>
         </li>
+
+        {{!-- Cart Trigger --}}
+        <li class="navPages-item a--cart">
+            <a class="navUser-action2 lv1 navPages-action pr" data-cart-preview data-dropdown="cart-preview-dropdown1" data-options="align:right">
+                <i class="fa fa-shopping-basket"></i>
+                {{#if cart.items}}<span class="badge qty">{{cart.quantity}}</span>{{/if}}
+            </a>
+            <div class="dropdown-menu fixed" id="cart-preview-dropdown1" data-dropdown-content aria-hidden="true">
+                {{!-- {{> components/deadsoxy/cart-preview}} --}}
+            </div>
+        </li>
+
+        {{!-- item CART--}}
+        {{!-- <li class="icon-itm a--cart">
+            <a class="navUser-action2 lv1" data-cart-preview data-dropdown="cart-preview-dropdown1" data-options="align:right"
+                href="{{urls.cart}}">
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                {{#if cart.items}}<span class="badge qty">{{cart.quantity}}</span>{{/if}}
+            </a>
+            <div class="dropdown-menu fixed" id="cart-preview-dropdown1" data-dropdown-content aria-hidden="true">
+            </div>
+        </li> --}}
                 
         {{!-- pages --}}
         {{!-- {{#unless theme_settings.hide_content_navigation}}
@@ -67,7 +89,8 @@
         (isOpen) ? close(data_el, $this) : opeN(data_el, $this);
         $('#'+data+':first *:input[type!=hidden]:first').focus();
         scroll_listener(data_el, $this);
-        bodyClickListen(data_el, $this)
+        bodyClickListen(data_el, $this);
+        megaTop();
     });
     
     function close(data_el, $t){
@@ -109,12 +132,11 @@
         });
     }
 
-    megaTop();
     function megaTop() {
         setTimeout( function() {
             var headerHeight = $('header').outerHeight();
             $('.mega').css('top', headerHeight+'px');
-        },1000);
+        },10);
     }
 
     function hasC (element, className) {

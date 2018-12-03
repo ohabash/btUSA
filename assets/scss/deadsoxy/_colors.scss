@@ -1,5 +1,6 @@
 // basically repeat above
-$dark: #333333;
+$dark_brand: #30261d;
+$dark: #231f20;
 $darker: darken($dark, 4%);
 // $dark: #282b39;
 $Ldark: lighten($dark, 3%);
@@ -12,7 +13,7 @@ $black: #000000;
 $blue: #1489DD;
 $dblue: #202135;
 $purple: $green;
-$orange: #ed6c24;
+$orange: #ED7100;
 $dgray: #333;
 $facebook: #3B5998;
 $google: #DB4317;

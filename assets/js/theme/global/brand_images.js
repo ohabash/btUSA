@@ -10,7 +10,7 @@ export default function brand_images() {
 
 	// if admin show form
 	IsAdmin.check(function(authorized) {
-		console.info('admin: ', authorized);
+		// console.info('admin: ', authorized);
 		if(authorized) {
 			$upload_form.show();
 		}

@@ -8,12 +8,12 @@ require("firebase/storage");
 // require("firebase/firestore");
 
 const config = {
-    apiKey: "AIzaSyAxIlE7A1BknqhcO0Ng61no8zirwZVT6u0",
-    authDomain: "deadsoxy-91897.firebaseapp.com",
-    databaseURL: "https://deadsoxy-91897.firebaseio.com",
-    projectId: "deadsoxy-91897",
-    storageBucket: "deadsoxy-91897.appspot.com",
-    messagingSenderId: "991519241496"
+    apiKey: "AIzaSyCwn5kF5wZmtJ4Yj-9CrvgEKh3j3E4el5k",
+    authDomain: "biltongusa-b3c12.firebaseapp.com",
+    databaseURL: "https://biltongusa-b3c12.firebaseio.com",
+    projectId: "biltongusa-b3c12",
+    storageBucket: "biltongusa-b3c12.appspot.com",
+    messagingSenderId: "279405123050"
 };
 firebase.initializeApp(config);
 const db = firebase.database();

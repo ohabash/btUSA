@@ -52,8 +52,13 @@ blog:
                     {{> components/products/new products=products.top_sellers title="Top Sellers"}}
                 </div>
             {{/if}} --}}
+            {{!-- feature-set-2 --}}
+            {{> components/deadsoxy/home-feature-set-1}}
+            <br>
+            {{> components/deadsoxy/home-about}}
 
             {{#if products.featured}}
+                <div class="p2em"></div>
                 <div class="container">
                     {{> components/products/featured products=products.featured title="Featured"}}
                 </div>
@@ -63,18 +68,17 @@ blog:
 
 
             
-            {{> components/deadsoxy/home-about}}
             {{#if settings.show_newsletter_box}}
                 {{!-- {{> components/deadsoxy/newsletter}} --}}
             {{/if}}
 
 
-            {{#if products.top_sellers}}
+            {{!-- {{#if products.top_sellers}}
                 <div class="p2em"></div>
                 <div class="container">
                     {{> components/products/new products=products.top_sellers title="Top Sellers"}}
                 </div>
-            {{/if}}
+            {{/if}} --}}
             
 
 

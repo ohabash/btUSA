@@ -1,5 +1,6 @@
-{{#if bulk_discount_rates.length}}
-    {{#if product}}<dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>{{/if}}
+
+{{#if product.bulk_discount_rates.length}}
+    {{!-- {{#if product}}<dt class="productView-info-name">{{lang 'products.bulk_pricing.title'}}</dt>{{/if}} --}}
     <dd class="productView-info-value">
         <a href="{{url}}"
            {{#unless is_ajax }}data-reveal-id="bulkPricingModal{{#if id}}-{{id}}-{{$index}}{{/if}}">{{/unless}}
@@ -13,8 +14,9 @@
         </div>
         <div class="modal-body">
             <p>{{lang 'products.bulk_pricing.instructions'}}</p>
+            <br>
             <ul>
-                {{#each bulk_discount_rates}}
+                {{#each product.bulk_discount_rates}}
                 <li>
                     {{lang 'products.bulk_pricing.range' min=min max=max}}
                     {{#if type '===' 'percent'}}
@@ -29,6 +31,9 @@
                 </li>
                 {{/each}}
             </ul>
+            <p class="disclaim">
+                <em>**Product must be same style and flavor to qualify for bulk pricing.</em>
+            </p>
         </div>
     </div>
 {{/if}}

@@ -12,7 +12,7 @@ export default class GiftCertificate extends PageManager {
         this.context = context;
 
         const $certBalanceForm = $('#gift-certificate-balance');
-
+        $('body').addClass('gift');
         const purchaseModel = {
             recipientName(val) {
                 return val.length;

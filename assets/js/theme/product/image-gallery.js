@@ -10,7 +10,7 @@ export default class ImageGallery {
     }
 
     init() {
-        // this.setImageZoom(); // no zoom needed
+        this.setImageZoom(); // no zoom needed
         const self = this;
         setTimeout( function(){
             let selector = $('[data-image-gallery-item]');

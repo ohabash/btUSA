@@ -1,4 +1,10 @@
+{{!-- elephants --}}
+<div class="elephants">
+	<img class="heading" src="{{cdn 'img/elphants.png'}}"></img>
+</div>
+
 <footer id="footer" class="footer">
+	
 
 	<div class="container">
 		<div class="columns p2em is-mobile">
@@ -8,8 +14,10 @@
 			<div class="column ink-logo is-2">
 				<div class="lg-contain">
 					{{!-- {{cdn 'img/logo_wht.svg'}} --}}
-					<img src="https://image.spreadshirtmedia.com/image-server/v1/mp/designs/1016489534,width=178,height=178/south-african-american-flag-south-africa-and-usa-design.png">
+					<img src="https://image.flaticon.com/icons/png/512/197/197562.png">
 				</div>
+
+
 			</div><div class="column is-1"></div>
 
 
@@ -66,7 +74,8 @@
 		            <article class="" data-section-type="storeInfo">
 		                <address>{{nl2br settings.address}}</address><hr style="opacity: 0.15">
 		                {{#if settings.phone_number}}
-		                    <span>{{lang 'footer.call_us' phone_number=settings.phone_number}}</span>
+							<a class="f" href="tel:{{settings.phone_number}}">{{settings.phone_number}}</a>
+							<a class="f" href="mailto:{{settings.email}}">info@biltongusa.com</a>
 		                {{/if}}
 		            </article>
 	            {{/if}}
@@ -78,19 +87,28 @@
 
 		</div>
 
+		{{!-- newsletter --}}
         {{> components/deadsoxy/newsletter-footer}}
+
+		{{!-- social --}}
+		<article class="footer-info-col tac p0 w100" data-section-type="footer-webPages">
+			{{> components/common/social-links}}
+		</article>
 
 		{{!-- copyright --}}
 		{{#if theme_settings.show_copyright_footer}}
 	        <div class="footer-copyright">
 	            <p class="powered-by">
-	            	<span><a href="https://www.instagram.com/Braaitime" target="_blank">#BraaiTime</a> | </span>
+	            	<span><a href="https://www.instagram.com/BiltongUSA" target="_blank">#BiltongUSA</a> | </span>
 	            	<span>&copy; {{moment format="YYYY"}} {{settings.store_name}} | </span>
-	            	<span>Made in South Africa &#9825 |</span>
-	            	<span> <a href="mailto:Help@Braaitime.com" target="_blank">Help@Braaitime.com</a></span>
+	            	<span>Authentic South African Biltong &#9825 |</span>
+	            	<span> <a href="mailto:info@biltongusa.com" target="_blank">info@biltongusa.com</a></span>
 	            </p>
 	        </div>
 	    {{/if}}
 		<br>
 	</div>
 </footer>
+
+
+

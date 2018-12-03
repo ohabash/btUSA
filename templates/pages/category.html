@@ -55,7 +55,7 @@ category:
 
 {{{snippet 'categories'}}}
 <div class="page container">
-    {{#if category.subcategories}}
+    {{!-- {{#if category.subcategories}}
         {{> components/category/sidebar}}
     {{else if category.faceted_search_enabled}}
         {{> components/category/sidebar}}
@@ -63,7 +63,7 @@ category:
         {{#if theme_settings.shop_by_price_visibility}}
             {{> components/category/sidebar}}
         {{/if}}
-    {{/if}}
+    {{/if}} --}}
     <main class="page-content" id="product-listing-container">
         {{#if category.products}}
             {{> components/category/product-listing}}

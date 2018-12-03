@@ -27,8 +27,10 @@
   var grand_total ="{{cart.grand_total.formatted}}".replace('$','');
   grand_total = grand_total.replace(',', '');
   var total = parseFloat(grand_total);
-  var cap = 300;
+  var cap = 60;
   var milestones = []
+
+  total = (total>cap) ? cap : total;
 
   // progress
   var progress = grand_total/cap;
@@ -36,12 +38,17 @@
   
   // freeShipping
   newTick('freeShipping', 25, 'Shipping', 'Free Shipping');
-  newTick('tenOff', 100, '10%', '10% Off');
-  newTick('twentyOff', 200, '20%', '20% Off', 'left');
+  // newTick('tenOff', 100, '10%', '10% Off');
+  // newTick('twentyOff', 200, '20%', '20% Off', 'left');
 
 
   // set progress
   $('.js-meter-bar').css('width', progress+'%');
+
+  // Change Messge if goal reached
+  if(progress>96) {
+    $('.tac h3').text('You Qualify for Free Shipping.')
+  }
 
   function newTick(name, gate, short, long, placement) {
     placement = (placement) ? placement : 'bottom';
@@ -75,9 +82,9 @@
     return ((aa < bb) ? -1 : ((aa > bb) ? 1 : 0));
   }
   // milestones.sort(SortByName);
-  milestones.sort(SortByFault)
+  // milestones.sort(SortByFault)
+  // $('.tac p').html(milestones[0].msg);
 
-  $('.tac p').html(milestones[0].msg);
 </script>
 
 
