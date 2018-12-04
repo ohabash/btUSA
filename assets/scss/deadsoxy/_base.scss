@@ -1,5 +1,3 @@
-
-
 html {
 	background: $dark;
 }
@@ -151,8 +149,8 @@ p {
 	    position: absolute;
     	margin: 3em;
 		top: 40% !important;
-		width: 100%!important;
-		margin-left: 0em!important;
+		width: 90%!important;
+		margin-left: 1em!important;
 	}
 	@include bp(L-phone) {
 		margin: 1em;
@@ -163,7 +161,7 @@ p {
 		h1 {
 			font-size:2em !important;
 		}
-		top: 10% !important;
+		top: 15% !important;
 	}
 }
 
@@ -233,7 +231,7 @@ p {
 		     
 			justify-content: center!important;
 			max-width: 100%!important;
-			padding-bottom: 25px;
+			padding-bottom: 20px;
 		
 		 
 		
@@ -447,21 +445,25 @@ body.scrolled {
 	nav{
 		@include bp(M-tablet)
 		{
-			padding-bottom: 0em!important;
+			padding-bottom: 0.3em!important;
 			margin:0em !important;
 		}
 		max-width: 100%;
 		.navPages-list{
+			
 			opacity: 0; // removed in menu.js
 			@include ease(0.2s);
 			&.loaded {
 				opacity: 1;
 			}
-			li.navPages-item {
+			li.navPages-item 
+			{
 				font-size: 0.9em;
+				display: inline-block;
+				
 				>a{
 					padding: 1.3em;
-					// font-weight: 700;
+					font-weight: 700;
 					@include ease(0.2s);
 					&:hover {
 						color: inherit;
@@ -490,17 +492,17 @@ body.scrolled {
 		}
 		@include bp(L-tablet) {
 			padding: 0;
-			margin: 0.7em -1em;
+			
 			background: $dark !important;
 			position: relative;
-			padding-bottom: 1em;
+			
 			&:after, &:before {
 				content: " ";
 				position: absolute;
 				right: 0;
 				top: 0;
 				bottom: 0;
-				padding: 3em;
+				padding: 1em;
 				z-index: 1;
 				@include grad(90deg, rgba($dark,0), $dark, cover);
 			}
@@ -567,7 +569,7 @@ body.scrolled {
 			    li {
 			    	display: inline-block;
 			    	&[data-mega-toggle="_search"] {
-			    		display: none !important;
+			    		
 			    	}
 			    	a {
 			    		// padding: 1em !important;
