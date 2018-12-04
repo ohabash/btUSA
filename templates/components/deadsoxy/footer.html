@@ -1,0 +1,114 @@
+{{!-- elephants --}}
+<div class="elephants">
+	<img class="heading" src="{{cdn 'img/elphants.png'}}"></img>
+</div>
+
+<footer id="footer" class="footer">
+	
+
+	<div class="container">
+		<div class="columns p2em is-mobile">
+
+
+			{{!-- logo --}}
+			<div class="column ink-logo is-2">
+				<div class="lg-contain">
+					{{!-- {{cdn 'img/logo_wht.svg'}} --}}
+					<img src="https://image.flaticon.com/icons/png/512/197/197562.png">
+				</div>
+
+
+			</div><div class="column is-1"></div>
+
+
+			{{!-- catalogue --}}
+			<div class="column catalogue">
+				<h3>{{lang 'footer.categories'}}</h3>
+				<ul>
+	                {{#each categories}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+	            </ul>
+			</div>
+
+
+
+			{{!-- brands --}}
+			{{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+			<div class="column brands">
+				<h3>{{lang 'footer.brands'}}</h3>
+				<ul>
+	                {{#each shop_by_brand}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+	            </ul>
+			</div>
+			{{/and}}
+
+
+
+			{{!-- info --}}
+			<div class="column info">
+				<h3>Account</h3>
+				<ul>
+	                {{#each pages}}
+	                    <li>
+	                        <a href="{{url}}">{{name}}</a>
+	                    </li>
+	                {{/each}}
+					{{!-- <li><a href="javascript:void(0)">Social</a></li> --}}
+	                <li><a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a></li>
+				</ul>
+			</div>
+
+
+
+			{{!-- address --}}
+			<div class="column address">
+				<h3>info</h3>
+				{{#if settings.address}}
+		            <article class="" data-section-type="storeInfo">
+		                <address>{{nl2br settings.address}}</address><hr style="opacity: 0.15">
+		                {{#if settings.phone_number}}
+							<a class="f" href="tel:{{settings.phone_number}}">{{settings.phone_number}}</a>
+							<a class="f" href="mailto:{{settings.email}}">info@biltongusa.com</a>
+		                {{/if}}
+		            </article>
+	            {{/if}}
+			</div>
+
+
+
+
+
+		</div>
+
+		{{!-- newsletter --}}
+        {{> components/deadsoxy/newsletter-footer}}
+
+		{{!-- social --}}
+		<article class="footer-info-col tac p0 w100" data-section-type="footer-webPages">
+			{{> components/common/social-links}}
+		</article>
+
+		{{!-- copyright --}}
+		{{#if theme_settings.show_copyright_footer}}
+	        <div class="footer-copyright">
+	            <p class="powered-by">
+	            	<span><a href="https://www.instagram.com/BiltongUSA" target="_blank">#BiltongUSA</a> | </span>
+	            	<span>&copy; {{moment format="YYYY"}} {{settings.store_name}} | </span>
+	            	<span>Authentic South African Biltong &#9825 |</span>
+	            	<span> <a href="mailto:info@biltongusa.com" target="_blank">info@biltongusa.com</a></span>
+	            </p>
+	        </div>
+	    {{/if}}
+		<br>
+	</div>
+</footer>
+
+
+

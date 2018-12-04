@@ -1,0 +1,46 @@
+{{#if settings.account_creation_enabled}}
+	{{#unless customer.id}}
+		{{> components/deadsoxy/account-links}}
+	{{else}}
+		<ul class="account-links ">
+			<div class="link-group">
+				<li>
+					<a class="dfs">
+						Account
+					</a>
+					<div class="account_drop">
+						{{> components/deadsoxy/account-links}}
+					</div>
+				</li>
+				<li></li>
+			</div>
+		</ul>
+	{{/unless}}
+{{/if}}
+
+
+
+<script>
+	$('.dfs').click(function(e){
+		e.preventDefault();
+		if($('.account_drop').hasClass('is-open')){
+			console.log('taking')
+			$('.account_drop').removeClass('is-open');
+		}else{
+			console.log('adding')
+			$('.account_drop').addClass('is-open');
+		}
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
